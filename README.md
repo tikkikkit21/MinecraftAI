@@ -23,3 +23,6 @@ speaking, the project outline is:
     - Break apart videos into frames
     - Annotate each frame with RoboFlow
     - Send data to Tikki for model training
+
+## Project Workflow
+We will be using GitHub to store all our work. Communication will occur in the group chat (either iMessage or Discord). We will be using **branching** and **pull requests** to update the codebase.
