@@ -25,3 +25,6 @@ dataset-name
   ├─ valid/         <- data to validate final selected model (step 3)
   
 ```
+5. `yolo task=detect mode=train model=yolov8s.pt data={dataset.location}/data.yaml epochs=100 imgsz=640`
+    - I did have to tweak `data.yaml` to match the file hierarchy by replacing `../` with `./` since the images were in the same location as the YAML
+    - I also had to modify `C:\Users\Me\AppData\Roaming\Ultralytics\settings.yaml` to change the dataset directory to point to `yoloTest`
