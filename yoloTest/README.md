@@ -4,3 +4,14 @@ https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset/
 
 
 1. First install packages: `pip install -r requirements.txt`
+2. Use the [football player](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc/dataset/2?ref=blog.roboflow.com)
+sample dataset
+    - In our actual project, we'll be uploading and annotating our own dataset
+3. Export the dataset in Roboflow via the "Jupyter" option. The will result in some Python code:
+    ```Python
+    from roboflow import Roboflow
+    rf = Roboflow(api_key="PZGlBTGGM8JFdz8FGC9r")
+    project = rf.workspace("roboflow-jvuqo").project("football-players-detection-3zvbc")
+    dataset = project.version(2).download("yolov8")
+    ```
+    - Will need to `pip install roboflow` 
