@@ -15,3 +15,13 @@ sample dataset
     dataset = project.version(2).download("yolov8")
     ```
     - Will need to `pip install roboflow` 
+4. After running this script, we will have downloaded our dataset like so:
+
+```
+dataset-name
+  ├─ data.yaml      <- YAML file with some config info about the dataset
+  ├─ test/          <- images to test different models (step 2)
+  ├─ train/         <- initial data to train the model (step 1)
+  ├─ valid/         <- data to validate final selected model (step 3)
+  
+```
