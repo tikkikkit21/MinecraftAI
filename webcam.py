@@ -65,7 +65,7 @@ while True:
             color = (255, 0, 0)
             thickness = 2
 
-            cv2.putText(img, classNames[cls], org, font, fontScale, color, thickness)
+            cv2.putText(img, f"{classNames[cls]}: {confidence}", org, font, fontScale, color, thickness)
 
     # names the window
     cv2.imshow('Webcam', img)
