@@ -1,6 +1,7 @@
 import cv2
 from ultralytics import YOLO
 import math
+import time
 
 # YOLO set up
 model = YOLO("yolov8n.pt")
@@ -24,6 +25,14 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
               "teddy bear", "hair drier", "toothbrush"
               ]
 
+def getFPS(frames = 120):
+    start = time.time()
+    for _ in range(frames):
+        capture.read()
+    end = time.time()
+    return frames/(end - start)
+
+print("FPS:", getFPS())
 
 while True:
     success, img= capture.read()
