@@ -48,7 +48,7 @@ while True:
             x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) # convert to int values
 
             # put box in cam
-            cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
+            cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
 
             # confidence
             confidence = math.ceil((box.conf[0]*100))/100
@@ -62,7 +62,7 @@ while True:
             org = [x1, y1]
             font = cv2.FONT_HERSHEY_SIMPLEX
             fontScale = 1
-            color = (255, 0, 0)
+            color = (0, 0, 255)
             thickness = 2
 
             cv2.putText(img, f"{classNames[cls]}: {confidence}", org, font, fontScale, color, thickness)
