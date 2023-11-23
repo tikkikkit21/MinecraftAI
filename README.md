@@ -1,4 +1,4 @@
-# Notes
+# YOLOv8 Custom Dataset Test
 The goal of this branch is to learn how to train custom data using YOLOv8. These
 are my notes about what I did as I followed this tutorial:
 https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset/
