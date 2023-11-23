@@ -1,5 +1,6 @@
 # Notes
-These are my notes about what I did as I followed this tutorial:
+The goal of this branch is to learn how to train custom data using YOLOv8. These
+are my notes about what I did as I followed this tutorial:
 https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset/
 
 
@@ -28,3 +29,4 @@ dataset-name
 5. `yolo task=detect mode=train model=yolov8s.pt data={dataset.location}/data.yaml epochs=100 imgsz=640`
     - I did have to tweak `data.yaml` to match the file hierarchy by replacing `../` with `./` since the images were in the same location as the YAML
     - I also had to modify `C:\Users\Me\AppData\Roaming\Ultralytics\settings.yaml` to change the dataset directory to point to `yoloTest`
+6. After like 16 hours (for 100 epochs), we have results in `runs/detect/train#`. There are weight files that we can use for later.
