@@ -22,3 +22,4 @@ looking at [this tutorial](https://dipankarmedh1.medium.com/real-time-object-det
     cap.release()
     cv2.destroyAllWindows()
     ```
+3. Going to use coco128 (a global dataset) to train some pseudo data: `yolo train data=coco128.yaml model=yolov8n.pt epochs=10 lr0=0.01`
