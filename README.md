@@ -23,3 +23,6 @@ looking at [this tutorial](https://dipankarmedh1.medium.com/real-time-object-det
     cv2.destroyAllWindows()
     ```
 3. Going to use coco128 (a global dataset) to train some pseudo data: `yolo train data=coco128.yaml model=yolov8n.pt epochs=10 lr0=0.01`
+4. After training, we can use the `best.pt` found under the run
+5. Use some math to draw the rectangle and display class name + confidence
+6. Result:<br>![result](result.png) 
