@@ -52,11 +52,11 @@ while True:
 
             # confidence
             confidence = math.ceil((box.conf[0]*100))/100
-            print("Confidence --->",confidence)
+            # print("Confidence --->",confidence)
 
             # class name
             cls = int(box.cls[0])
-            print("Class name -->", classNames[cls])
+            # print("Class name -->", classNames[cls])
 
             # object details
             org = [x1, y1]
