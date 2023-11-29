@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-EPOCHS = 5
+EPOCHS = 20
 IMGSZ=640
 
 model = YOLO("yolov8n.pt")
