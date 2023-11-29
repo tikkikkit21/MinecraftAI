@@ -10,3 +10,9 @@ the values and store in their own local .env file.
 Some of the pip packages used:
 - `roboflow`
 - `python-dotenv`
+
+## Training
+Use `train.py` to train the model after downloading the dataset.git 
+
+Pip packages used:
+- `ultranalytics`
