@@ -12,7 +12,9 @@ Some of the pip packages used:
 - `python-dotenv`
 
 ## Training
-Use `train.py` to train the model after downloading the dataset.git 
+Use `train.py` to train the model after downloading the dataset. You can provide
+the number of training epochs like so: `train.py [num epochs]`. If none are
+provided, the default is 20. You can also use `-h` for a help message.
 
 Pip packages used:
 - `ultranalytics`
