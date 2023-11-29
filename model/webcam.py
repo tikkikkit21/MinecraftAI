@@ -4,7 +4,19 @@ import math
 import time
 
 # YOLO set up
-path_to_weights = "./runs/detect/train2/weights/best.pt"
+import sys
+TRAIN_NUM = ""
+if len(sys.argv) == 2:
+    if sys.argv[1] == "-h":
+        print("Usage: webcam.py [train number]")
+        exit()
+    else:
+        try:
+            TRAIN_NUM = int(sys.argv[1])
+        except ValueError:
+            print("Train number")
+            exit()
+path_to_weights = f"./runs/detect/train{TRAIN_NUM}/weights/best.pt"
 model = YOLO(path_to_weights)
 
 # 0 indicates it's a webcam
