@@ -3,12 +3,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
-api = os.environ.get("ROBOFLOW_API")
-workspace = os.environ.get("ROBOFLOW_WORKSPACE")
-project = os.environ.get("ROBOFLOW_PROJECT")
+ROBOFLOW_API = os.environ.get("ROBOFLOW_API")
+ROBOFLOW_WORKSPACE = os.environ.get("ROBOFLOW_WORKSPACE")
+ROBOFLOW_PROJECT = os.environ.get("ROBOFLOW_PROJECT")
 
 # download dataset
 from roboflow import Roboflow
-rf = Roboflow(api)
-project = rf.workspace(workspace).project(project)
+rf = Roboflow(ROBOFLOW_API)
+project = rf.workspace(ROBOFLOW_WORKSPACE).project(ROBOFLOW_PROJECT)
 dataset = project.version(1).download(model_format="yolov8", location="./dataset")
