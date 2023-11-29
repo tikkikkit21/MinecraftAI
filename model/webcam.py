@@ -44,6 +44,9 @@ while True:
             (className, classColor) = classes[int(box.cls[0])]
             confidence = math.ceil((box.conf[0] * 100)) / 100
 
+            if (confidence < 0.90):
+                continue
+
             # bounding box
             x1, y1, x2, y2 = box.xyxy[0]
             x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) # convert to int values
