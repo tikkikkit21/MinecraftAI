@@ -8,7 +8,12 @@ if len(sys.argv) == 2:
         print("Usage: train.py [num epochs, default is 20]")
         exit()
     else:
-        EPOCHS = sys.argv[1]
+        try:
+            EPOCHS = int(sys.argv[1])
+        except ValueError:
+            print("Number of epochs needs to be an int")
+            exit()
+
 
 # train with YOLOv8
 from ultralytics import YOLO
