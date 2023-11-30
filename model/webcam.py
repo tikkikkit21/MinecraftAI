@@ -33,7 +33,7 @@ classes = [
 
 while True:
     success, img= capture.read()
-    results = model(img, stream=True)
+    results = model(img, stream=True, verbose=False)
 
     # draw box
     for r in results:
