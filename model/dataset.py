@@ -28,5 +28,6 @@ if len(sys.argv) == 2:
             exit()
 else:
     PROJECT_VERSION = project.versions()[0].version
-    
+
+print(f"Downloading version {PROJECT_VERSION}")
 dataset = project.version(PROJECT_VERSION).download(model_format="yolov8", location="./dataset")
