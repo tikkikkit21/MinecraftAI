@@ -61,6 +61,7 @@ while True:
             thickness = 2
 
             cv2.putText(img, f"{className}: {confidence}", org, font, fontScale, classColor, thickness)
+            print(f"Detected {className}: {confidence}")
 
     # names the window
     cv2.imshow('Webcam', img)
