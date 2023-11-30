@@ -1,11 +1,14 @@
 from javascript import require, On
 import math
+import numpy as np
 mineflayer = require('mineflayer')
 pathfinder = require('mineflayer-pathfinder')
 viewer = require('prismarine-viewer')
+Vec3 = require('Vec3')
+item = require('prismarine-item')('1.20')
 
 RANGE_GOAL = 1
-BOT_USERNAME = 'python' # Email here if using account
+BOT_USERNAME = 'TikkiIsDifferent' # Email here if using account
 BOT_PASSWORD = '' # Password here if using account
 
 bot = mineflayer.createBot({
@@ -38,6 +41,9 @@ class Movement():
         self.bot.setControlState('jump', True)
         self.bot.setControlState('jump', False)
 
+    def sneak(self):
+        self.bot.setControlState('sneak', True)
+
     def stop(self):
         self.bot.clearControlStates()
 
@@ -51,6 +57,32 @@ class Hands():
             self.bot.attack(entity, True)
         else:
             print("no entities nearby")
+    
+    def destroyBlock(self):
+        self.bot.stopDigging()
+        block = self.bot.blockAtCursor(4)
+        if block and not self.bot.targetDigBlock:
+            if self.bot.canDigBlock(block):
+                self.bot.dig(block, False)
+            else:
+                print("Bot cannot mine this block.")
+        else:
+            print("No block within range of sight (must be within 4 blocks inclusively)")
+    
+    
+    def placeBlock(self): # Doesn't work properly for now...
+        block = self.bot.blockAtCursor(4)
+        heldItem = self.bot.heldItem
+        # canPlaceOnBlocks = []
+        # if heldItem:
+        #     canPlaceOnBlocks = heldItem.blocksCanPlaceOn
+        #     print(heldItem)
+        #     print("hola como esta")
+        #     print(canPlaceOnBlocks)
+        if block and not self.bot.targetDigBlock:
+            self.bot.placeBlock(block, Vec3(0,1,0))
+        else:
+            print("No block within range of sight to place block on.")
 
 class Head():
     def __init__(self):
@@ -84,3 +116,14 @@ def handle(*args):
     bot.look(0, 0, True)
     bot.chat("Hello")
 
+
+@On(bot, 'blockPlaced')
+def handle(*args):
+    print("LEN ARGS")
+    print(len(args))
+    # for i, arg in enumerate(args):
+    #     print(i)
+    #     print(arg)
+    print(args[1])
+    print(args[2])
+    

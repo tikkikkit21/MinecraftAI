@@ -1,4 +1,5 @@
 import keyboard
+import asyncio
 from basic import *
 
 ctrl = Movement()
@@ -11,12 +12,15 @@ key_bindings = {
     's': ctrl.moveBackward,
     'd': ctrl.moveRight,
     'space': ctrl.jump,
+    'shift': ctrl.sneak,
     'r': ctrl.stop,
     'f': hands.attack,
     '[': head.rotateLeft,
     ']': head.rotateRight,
     '-': head.rotateDown,
-    '=': head.rotateUp
+    '=': head.rotateUp,
+    'x': hands.destroyBlock,
+    'c': hands.placeBlock
 }
 
 # Listen for key presses
