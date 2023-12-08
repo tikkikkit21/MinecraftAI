@@ -2,20 +2,24 @@ import cv2
 from ultralytics import YOLO
 import math
 import time
+import sys
 
+sys.path.insert(0, '../middleware')
+
+from basic import *
 # YOLO set up
 import sys
-TRAIN_NUM = ""
-if len(sys.argv) == 2:
-    if sys.argv[1] == "-h":
-        print("Usage: webcam.py [train number]")
-        exit()
-    else:
-        try:
-            TRAIN_NUM = int(sys.argv[1])
-        except ValueError:
-            print("Train number")
-            exit()
+TRAIN_NUM = 10
+# if len(sys.argv) == 2:
+#     if sys.argv[1] == "-h":
+#         print("Usage: webcam.py [train number]")
+#         exit()
+#     else:
+#         try:
+#             TRAIN_NUM = int(sys.argv[1])
+#         except ValueError:
+#             print("Train number")
+#             exit()
 path_to_weights = f"./runs/detect/train{TRAIN_NUM}/weights/best.pt"
 model = YOLO(path_to_weights)
 
@@ -27,9 +31,18 @@ capture.set(3, 640)
 capture.set(4, 480)
 
 classes = [
-    ('stand', (0, 0, 255)),
-    ('walk', (0, 255, 0))
+    # ('stand', (0, 0, 255)),
+    # ('walk', (0, 255, 0))
+    ('head_up', (255, 0, 0)),
+    ('right_click', (255, 0, 0)),
+    ('shift', (255, 0, 0)),
+    ('walk', (255, 0, 0))
 ]
+
+# Middleware setup
+ctrl = Movement()
+hands = Hands()
+head = Head()
 
 while True:
     success, img= capture.read()
@@ -44,7 +57,7 @@ while True:
             (className, classColor) = classes[int(box.cls[0])]
             confidence = math.ceil((box.conf[0] * 100)) / 100
 
-            if (confidence < 0.90):
+            if (confidence < 0.70):
                 continue
 
             # bounding box
@@ -62,6 +75,20 @@ while True:
 
             cv2.putText(img, f"{className}: {confidence}", org, font, fontScale, classColor, thickness)
             print(f"Detected {className}: {confidence}")
+
+            if className == 'head_up':
+                ctrl.stop()
+                head.rotateUp()
+            elif className == 'right_click':
+                ctrl.stop()
+                hands.placeBlock()
+            elif className == 'shift':
+                ctrl.sneak()
+            elif className == 'walk':
+                ctrl.moveForward()
+            else:
+                ctrl.stop()
+
 
     # names the window
     cv2.imshow('Webcam', img)

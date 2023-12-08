@@ -2,8 +2,6 @@ from javascript import require, On
 import math
 import numpy as np
 mineflayer = require('mineflayer')
-pathfinder = require('mineflayer-pathfinder')
-viewer = require('prismarine-viewer')
 Vec3 = require('Vec3')
 item = require('prismarine-item')('1.20')
 
@@ -18,7 +16,6 @@ bot = mineflayer.createBot({
 #   'password': BOT_PASSWORD # If using an actual account, uncomment this.
 })
 
-bot.loadPlugin(pathfinder.pathfinder)
 print("Started mineflayer")
 
 class Movement():
@@ -87,7 +84,7 @@ class Hands():
 class Head():
     def __init__(self):
         self.bot = bot
-        self.yaw = 0
+        self.yaw = math.pi
         self.pitch = 0
 
     def rotateLeft(self):
@@ -113,7 +110,7 @@ class Head():
 
 @On(bot, 'spawn')
 def handle(*args):
-    bot.look(0, 0, True)
+    bot.look(math.pi, 0, True)
     bot.chat("Hello")
 
 
