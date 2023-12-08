@@ -2,3 +2,4 @@
 dataset
 .env
 runs
+__pycache__
