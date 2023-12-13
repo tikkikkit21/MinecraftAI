@@ -4,7 +4,7 @@ if os.path.exists("./dataset"):
     okDelete = input("A folder named 'dataset' already exists, delete and replace it? (Y/n) ")
     
     if (okDelete.lower() in ['', 'y', 'yes']):
-        print("yes")
+        print("Deleting 'dataset'...")
         shutil.rmtree("./dataset")
     else:
         print("Please delete the folder and try again.")
@@ -21,7 +21,9 @@ ROBOFLOW_PROJECT = os.environ.get("ROBOFLOW_PROJECT")
 # download dataset
 from roboflow import Roboflow
 rf = Roboflow(ROBOFLOW_API)
-project = rf.workspace(ROBOFLOW_WORKSPACE).project(ROBOFLOW_PROJECT)
+workspace = rf.workspace(ROBOFLOW_WORKSPACE)
+project = workspace.project(ROBOFLOW_PROJECT)
+print(f"Found project '{project.name}' in workspace '{workspace.name}'")
 
 # get version number
 import sys
