@@ -1,8 +1,19 @@
+# check to make sure there's no existing 'dataset' folder
+import os, shutil
+if os.path.exists("./dataset"):
+    okDelete = input("A folder named 'dataset' already exists, delete and replace it? (Y/n) ")
+    
+    if (okDelete.lower() in ['', 'y', 'yes']):
+        print("yes")
+        shutil.rmtree("./dataset")
+    else:
+        print("Please delete the folder and try again.")
+        exit()
+
 # get Roboflow tokens from .env file
 from dotenv import load_dotenv
 load_dotenv()
 
-import os
 ROBOFLOW_API = os.environ.get("ROBOFLOW_API")
 ROBOFLOW_WORKSPACE = os.environ.get("ROBOFLOW_WORKSPACE")
 ROBOFLOW_PROJECT = os.environ.get("ROBOFLOW_PROJECT")
