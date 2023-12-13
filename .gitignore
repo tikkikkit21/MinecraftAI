@@ -1,5 +1,8 @@
-# model
+# model outputs
 dataset
-.env
 runs
+
+# behind the scenes
+.env
 __pycache__
+.vscode
