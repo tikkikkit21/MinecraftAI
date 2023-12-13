@@ -1,7 +1,6 @@
 import cv2
 from ultralytics import YOLO
 import math
-import time
 import sys
 
 sys.path.insert(0, '../middleware')
@@ -9,17 +8,17 @@ sys.path.insert(0, '../middleware')
 from basic import *
 # YOLO set up
 import sys
-TRAIN_NUM = 10
-# if len(sys.argv) == 2:
-#     if sys.argv[1] == "-h":
-#         print("Usage: webcam.py [train number]")
-#         exit()
-#     else:
-#         try:
-#             TRAIN_NUM = int(sys.argv[1])
-#         except ValueError:
-#             print("Train number")
-#             exit()
+TRAIN_NUM = ""
+if len(sys.argv) == 2:
+    if sys.argv[1] == "-h":
+        print("Usage: webcam.py [train number]")
+        exit()
+    else:
+        try:
+            TRAIN_NUM = int(sys.argv[1])
+        except ValueError:
+            print("Train number")
+            exit()
 path_to_weights = f"./runs/detect/train{TRAIN_NUM}/weights/best.pt"
 model = YOLO(path_to_weights)
 
@@ -76,6 +75,7 @@ while True:
             cv2.putText(img, f"{className}: {confidence}", org, font, fontScale, classColor, thickness)
             print(f"Detected {className}: {confidence}")
 
+            # Minecraft code
             if className == 'head_up':
                 ctrl.stop()
                 head.rotateUp()
